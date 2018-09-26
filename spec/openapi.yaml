@@ -1,0 +1,38 @@
+openapi: "3.0.0"
+info:
+  title: webdev42 developers
+  version: "0.0.0"
+servers:
+  - url: http://localhost:5000/v1/
+paths:
+  /developers/:
+    get:
+      operationId: webdev.get_developer
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Developers"
+              example:
+                name: Batman
+                id: 29e805ba-fa99-4892-8873-6a5a0881569f
+components:
+  schemas:
+    Developer:
+      properties:
+        name:
+          type: string
+        id:
+          type: string
+          format: uuid
+    Developers:
+      type: array
+      items:
+        "$ref": "#/components/schemas/Developer"
