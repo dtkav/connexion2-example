@@ -23,6 +23,9 @@ paths:
               example:
                 name: Batman
                 id: 29e805ba-fa99-4892-8873-6a5a0881569f
+                skills:
+                 - javascript
+                 - node.js
     put:
       operationId: webdev.put_developer
       requestBody:
@@ -46,6 +49,10 @@ components:
         id:
           type: string
           format: uuid
+        skills:
+          type: array
+          items:
+            $ref: "#/components/schemas/Skill"
       required:
        - id
        - name
@@ -53,3 +60,10 @@ components:
       type: array
       items:
         "$ref": "#/components/schemas/Developer"
+    Skill:
+      type: string
+      enum:
+      - javascript
+      - node.js
+      - python
+      - postgres
