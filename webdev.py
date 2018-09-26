@@ -10,3 +10,14 @@ developers_db = [
 
 def get_developer(limit=100):
     return developers_db[0:limit]
+
+
+def put_developer(body):
+    global developers_db
+    for dev in developers_db:
+        if dev["id"] == body["id"]:
+            dev.update(body)
+            break
+    else:
+        developers_db += [body]
+    return body

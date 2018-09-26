@@ -23,6 +23,20 @@ paths:
               example:
                 name: Batman
                 id: 29e805ba-fa99-4892-8873-6a5a0881569f
+    put:
+      operationId: webdev.put_developer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Developer"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Developer"
 components:
   schemas:
     Developer:
@@ -32,6 +46,9 @@ components:
         id:
           type: string
           format: uuid
+      required:
+       - id
+       - name
     Developers:
       type: array
       items:
